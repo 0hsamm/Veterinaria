@@ -7,17 +7,20 @@ import co.edu.unbosque.model.Ave;
 public class AveDAO implements DAO<Ave>{
 	private ArrayList<Ave> listaAves;
 	private final String FILE_NAME = "Ave.csv";
+	private final String SERIAL_FILE_NAME = "Aves.bin";
 	
 	public AveDAO() {
 		listaAves = new ArrayList<>();
-		leerDesdeArchivoDeTexto(FILE_NAME);
+		//leerDesdeArchivoDeTexto(FILE_NAME);
+		cargarDesdeArchivoSerializado();
 	}
 	
 	
 	@Override
 	public void create(Ave newData) {
 		listaAves.add(newData);
-		escribirEnArchivoDeTexto();
+		//escribirEnArchivoDeTexto();
+		escribirEnArchivoSerializado();
 		
 	}
 
@@ -28,7 +31,8 @@ public class AveDAO implements DAO<Ave>{
 		}
 		else {
 			listaAves.remove(index);
-			escribirEnArchivoDeTexto();
+			//escribirEnArchivoDeTexto();
+			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
@@ -40,7 +44,8 @@ public class AveDAO implements DAO<Ave>{
 		}
 		else {
 			listaAves.set(index , newData);
-			escribirEnArchivoDeTexto();
+			//escribirEnArchivoDeTexto();
+			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
@@ -106,6 +111,25 @@ public class AveDAO implements DAO<Ave>{
 			sb.append(ave.getTipoDePico() + "\n");
 		}
 		FileHandler.escribirEnArchivoTexto(FILE_NAME, sb.toString());
+	}
+
+
+	@Override
+	public void cargarDesdeArchivoSerializado() {
+		Object contenido = FileHandler.leerDesdeArchivoSerializado(SERIAL_FILE_NAME);
+		if (contenido != null) {
+			listaAves = (ArrayList<Ave>) contenido;
+		}
+		else {
+			listaAves = new ArrayList<>();
+		}
+	}
+
+
+	@Override
+	public void escribirEnArchivoSerializado() {
+		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaAves);
+		
 	}
 	
 	

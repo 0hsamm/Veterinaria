@@ -7,17 +7,20 @@ import co.edu.unbosque.model.Reptil;
 public class ReptilDAO implements DAO<Reptil>{
 	private ArrayList<Reptil> listaReptiles;
 	private final String FILE_NAME = "Reptil.csv";
+	private final String SERIAL_FILE_NAME = "Reptiles.bin";
 	
 	public ReptilDAO() {
 		listaReptiles = new ArrayList<>();
-		leerDesdeArchivoDeTexto(FILE_NAME);
+		//leerDesdeArchivoDeTexto(FILE_NAME);
+		cargarDesdeArchivoSerializado();
 	}
 	
 	
 	@Override
 	public void create(Reptil newData) {
 		listaReptiles.add(newData);
-		escribirEnArchivoDeTexto();
+		//escribirEnArchivoDeTexto();
+		escribirEnArchivoSerializado();
 	}
 
 	@Override
@@ -27,7 +30,8 @@ public class ReptilDAO implements DAO<Reptil>{
 		}
 		else {
 			listaReptiles.remove(index);
-			escribirEnArchivoDeTexto();
+//			escribirEnArchivoDeTexto();
+			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
@@ -39,7 +43,8 @@ public class ReptilDAO implements DAO<Reptil>{
 		}
 		else {
 			listaReptiles.set(index, newData);
-			escribirEnArchivoDeTexto();
+//			escribirEnArchivoDeTexto();
+			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
@@ -101,6 +106,25 @@ public class ReptilDAO implements DAO<Reptil>{
 			sb.append(reptil.isEsVenenoso() + "\n");
 		}
 		FileHandler.escribirEnArchivoTexto(FILE_NAME, sb.toString());
+	}
+
+
+	@Override
+	public void cargarDesdeArchivoSerializado() {
+		Object contenido = FileHandler.leerDesdeArchivoSerializado(SERIAL_FILE_NAME);
+		if (contenido != null) {
+			listaReptiles = (ArrayList<Reptil>) contenido;
+		}
+		else {
+			listaReptiles = new ArrayList<>();
+		}
+	}
+
+
+	@Override
+	public void escribirEnArchivoSerializado() {
+		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaReptiles);
+		
 	}
 	
 }

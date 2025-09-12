@@ -7,18 +7,19 @@ import co.edu.unbosque.model.Gato;
 public class GatoDAO implements DAO<Gato>{
 	private ArrayList<Gato> listaGatos;
 	private final String FILE_NAME = "Gato.csv";
+	private final String SERIAL_FILE_NAME = "Gatos.bin";
 	
 	public GatoDAO() {
 		listaGatos = new ArrayList<>();
-		leerDesdeArchivoDeTexto(FILE_NAME);
-		
+		//leerDesdeArchivoDeTexto(FILE_NAME);
+		cargarDesdeArchivoSerializado();
 	}
 	
 	@Override
 	public void create(Gato newData) {
 		listaGatos.add(newData);
-		escribirEnArchivoDeTexto();
-		
+		//escribirEnArchivoDeTexto();
+		escribirEnArchivoSerializado();
 	}
 
 	@Override
@@ -28,7 +29,8 @@ public class GatoDAO implements DAO<Gato>{
 		}
 		else {
 			listaGatos.remove(index);
-			escribirEnArchivoDeTexto();
+			//escribirEnArchivoDeTexto();
+			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
@@ -40,7 +42,8 @@ public class GatoDAO implements DAO<Gato>{
 		}
 		else {
 			listaGatos.set(index, newData);
-			escribirEnArchivoDeTexto();
+			//escribirEnArchivoDeTexto();
+			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
@@ -101,6 +104,23 @@ public class GatoDAO implements DAO<Gato>{
 			sb.append(gato.getTamanoOreja() + "\n");
 		}
 		FileHandler.escribirEnArchivoTexto(FILE_NAME, sb.toString());
+	}
+
+	@Override
+	public void cargarDesdeArchivoSerializado() {
+		Object contenido = FileHandler.leerDesdeArchivoSerializado(SERIAL_FILE_NAME);
+		if (contenido != null) {
+			listaGatos = (ArrayList<Gato>) contenido;
+		}
+		else {
+			listaGatos = new ArrayList<>();
+		}
+	}
+
+	@Override
+	public void escribirEnArchivoSerializado() {
+		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaGatos);
+		
 	}
 	
 }

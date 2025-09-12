@@ -9,4 +9,6 @@ public interface DAO <E>{
 	public int count();
 	public void  leerDesdeArchivoDeTexto(String url);
 	public void escribirEnArchivoDeTexto();
+	public void cargarDesdeArchivoSerializado();
+	public void escribirEnArchivoSerializado();
 }

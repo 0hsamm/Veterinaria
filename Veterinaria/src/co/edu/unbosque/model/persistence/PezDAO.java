@@ -7,16 +7,18 @@ import co.edu.unbosque.model.Pez;
 public class PezDAO implements DAO<Pez>{
 	private ArrayList<Pez> listaPeces;
 	private final String FILE_NAME = "Pez.csv";
+	private final String SERIAL_FILE_NAME = "Peces.bin";
 	
 	public PezDAO() {
 		listaPeces = new ArrayList<>();
-		leerDesdeArchivoDeTexto(FILE_NAME);
+		//leerDesdeArchivoDeTexto(FILE_NAME);
+		cargarDesdeArchivoSerializado();
 	}
 	
 	@Override
 	public void create(Pez newData) {
 		listaPeces.add(newData);
-		
+		escribirEnArchivoSerializado();
 	}
 
 	@Override
@@ -26,6 +28,7 @@ public class PezDAO implements DAO<Pez>{
 		}
 		else {
 			listaPeces.remove(index);
+			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
@@ -37,6 +40,7 @@ public class PezDAO implements DAO<Pez>{
 		}
 		else {
 			listaPeces.set(index, newData);
+			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
@@ -98,6 +102,23 @@ public class PezDAO implements DAO<Pez>{
 			sb.append(pez.getTamanoAleta() + "\n");
 		}
 		FileHandler.escribirEnArchivoTexto(FILE_NAME, sb.toString());
+	}
+
+	@Override
+	public void cargarDesdeArchivoSerializado() {
+		Object contenido = FileHandler.leerDesdeArchivoSerializado(FILE_NAME);
+		if (contenido != null) {
+			listaPeces = (ArrayList<Pez>) contenido;
+		}
+		else {
+			listaPeces = new ArrayList<>();
+		}
+	}
+
+	@Override
+	public void escribirEnArchivoSerializado() {
+		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaPeces);
+		
 	}
 	
 }
