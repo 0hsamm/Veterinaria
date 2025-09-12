@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.time.LocalDate;
+
 public class Ave extends Animal implements SerVivo , Mascota{
 	/**
 	 * 
@@ -12,28 +14,32 @@ public class Ave extends Animal implements SerVivo , Mascota{
 		super();
 	}
 
+	
+
 	public Ave(String tipoDePluma, String tipoDePico) {
 		super();
 		this.tipoDePluma = tipoDePluma;
 		this.tipoDePico = tipoDePico;
 	}
 
-	
+
 
 	public Ave(String nombre, String especie, float peso, int edad, char sexo, String habitat,
-			String formaDesplazamiento, String tipoDePluma, String tipoDePico) {
-		super(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento);
+			String formaDesplazamiento, LocalDate fechaIngreso, String tipoDePluma, String tipoDePico) {
+		super(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso);
 		this.tipoDePluma = tipoDePluma;
 		this.tipoDePico = tipoDePico;
 	}
-	
-	
+
+
 
 	public Ave(String nombre, String especie, float peso, int edad, char sexo, String habitat,
-			String formaDesplazamiento) {
-		super(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento);
+			String formaDesplazamiento, LocalDate fechaIngreso) {
+		super(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso);
 		// TODO Auto-generated constructor stub
 	}
+
+
 
 	public String getTipoDePluma() {
 		return tipoDePluma;

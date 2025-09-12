@@ -1,5 +1,7 @@
 package co.edu.unbosque.util.exception;
 
+import java.time.LocalDate;
+
 public class LanzadorDeExcepcion {
 	
 	public static void verificarNumeroNegativo(int n) throws NegativeNumberException {
@@ -34,6 +36,10 @@ public class LanzadorDeExcepcion {
 			return;
 		} 
 		throw new InvalidSizeException();
+	}
+	public static void verificarFecha(LocalDate fechaIngresada) throws InvalidDateException {
+		if(fechaIngresada.isAfter(LocalDate.now()))
+		throw new InvalidDateException();
 	}
 	
 }

@@ -1,5 +1,7 @@
 package co.edu.unbosque.controller;
 
+import java.time.LocalDate;
+
 import co.edu.unbosque.model.*;
 import co.edu.unbosque.util.exception.InvalidSizeException;
 import co.edu.unbosque.util.exception.InvalidSexException;
@@ -59,16 +61,16 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el perro (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					con.escribirLineaConSalto("Inserte el color del pelaje del perro");
 					String colorPelaje = con.leerLineaCompleta();
-					con.escribirLineaConSalto("Inserte el tamaño de la oreja del perro (Grande o mediano o pequeño)");
+					con.escribirLineaConSalto("Ingrese el tamaño de la oreja del perro: ");
 					String tamanoOreja = con.leerLineaCompleta();
+					
 
 
-					Perro newData = new Perro(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento,
-							colorPelaje, tamanoOreja);
+					Perro newData = new Perro(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, colorPelaje, tamanoOreja);
 					mf.getPerroDao().create(newData);
 					con.escribirLineaConSalto("Creado exitosamente");
 
@@ -112,7 +114,8 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el gato (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					
 					con.escribirLineaConSalto("Inserte el color del pelaje del gato");
 					String colorPelaje = con.leerLineaCompleta();
@@ -124,7 +127,7 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}
 
-					Gato gato = new Gato(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, colorPelaje,
+					Gato gato = new Gato(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, colorPelaje,
 							tamanoOreja);
 					mf.getGatoDao().create(gato);
 					con.escribirLineaConSalto("Creado exitosamente");
@@ -170,7 +173,8 @@ public class Controlador {
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
 					
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el pez (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					con.escribirLineaConSalto("¿El pez es tiene escamas?");
 					boolean tieneEscama = con.leerBooleano();
 					con.escribirLineaConSalto("Ingrese el tamaño de la aleta (grande o mediano o pequeño)");
@@ -181,7 +185,7 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}
 
-					Pez pez = new Pez(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, tieneEscama,
+					Pez pez = new Pez(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, tieneEscama,
 							tamanoAleta);
 					mf.getPezDao().create(pez);
 					con.escribirLineaConSalto("Creado exitosamente");
@@ -226,14 +230,15 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el reptil (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					
 					con.escribirLineaConSalto("¿El reptil es venenoso?");
 					boolean esVenenoso = con.leerBooleano();
 					con.escribirLineaConSalto("¿El reptil es tiene escamas?");
 					boolean tieneEscama = con.leerBooleano();
 
-					Reptil reptil = new Reptil(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento,
+					Reptil reptil = new Reptil(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, 
 							esVenenoso, tieneEscama);
 					mf.getReptilDao().create(reptil);
 					con.escribirLineaConSalto("Creado exitosamente");
@@ -278,14 +283,15 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el ave (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					
 					con.escribirLineaConSalto("Ingrese el tipo de plumas que tiene el ave");
 					String tipoDePluma = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese el tipo de pico");
 					String tipoDePico = con.leerLineaCompleta();
 
-					Ave ave = new Ave(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, tipoDePluma,
+					Ave ave = new Ave(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, tipoDePluma,
 							tipoDePico);
 					mf.getAveDao().create(ave);
 					con.escribirLineaConSalto("Creado exitosamente");
@@ -454,7 +460,8 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el perro (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					
 					con.escribirLineaConSalto("Inserte el color del pelaje del perro");
 					String colorPelaje = con.leerLineaCompleta();
@@ -466,7 +473,7 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}
 
-					Perro newData = new Perro(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento,
+					Perro newData = new Perro(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, 
 							colorPelaje, tamanoOreja);
 
 					mf.getPerroDao().update(index, newData);
@@ -521,7 +528,8 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el gato (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					
 					con.escribirLineaConSalto("Inserte el color del pelaje del gato");
 					String colorPelaje = con.leerLineaCompleta();
@@ -533,7 +541,7 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}
 
-					Gato gato = new Gato(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, colorPelaje,
+					Gato gato = new Gato(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, colorPelaje,
 							tamanoOreja);
 					mf.getGatoDao().update(index, gato);
 					con.escribirLineaConSalto("Actualizado exitosamente");
@@ -585,7 +593,8 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el pez (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					
 					con.escribirLineaConSalto("¿El pez es tiene escamas?");
 					boolean tieneEscama = con.leerBooleano();
@@ -597,7 +606,7 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}
 
-					Pez pez = new Pez(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, tieneEscama,
+					Pez pez = new Pez(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, tieneEscama,
 							tamanoAleta);
 					mf.getPezDao().update(index, pez);
 					con.escribirLineaConSalto("Actualizado exitosamente");
@@ -649,14 +658,15 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el reptil (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					
 					con.escribirLineaConSalto("¿El reptil es venenoso?");
 					boolean esVenenoso = con.leerBooleano();
 					con.escribirLineaConSalto("¿El reptil es tiene escamas?");
 					boolean tieneEscama = con.leerBooleano();
 
-					Reptil reptil = new Reptil(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento,
+					Reptil reptil = new Reptil(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso,
 							esVenenoso, tieneEscama);
 					mf.getReptilDao().update(index, reptil);
 					con.escribirLineaConSalto("Actualizado exitosamente");
@@ -708,14 +718,15 @@ public class Controlador {
 					String habitat = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese la forma de desplazamiento del animal: ");
 					String formaDesplazamiento = con.leerLineaCompleta();
-					
+					con.escribirLineaConSalto("Ingrese la fecha en la que fue ingresado el ave (yyyy-mm-dd):");
+					LocalDate fechaIngreso = con.leerFecha();
 					
 					con.escribirLineaConSalto("Ingrese el tipo de plumas que tiene el ave");
 					String tipoDePluma = con.leerLineaCompleta();
 					con.escribirLineaConSalto("Ingrese el tipo de pico");
 					String tipoDePico = con.leerLineaCompleta();
 
-					Ave ave = new Ave(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, tipoDePluma,
+					Ave ave = new Ave(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso, tipoDePluma,
 							tipoDePico);
 					mf.getAveDao().update(index, ave);
 					con.escribirLineaConSalto("Actualizado exitosamente");

@@ -1,5 +1,6 @@
 package co.edu.unbosque.view;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Consola {
@@ -45,6 +46,13 @@ public class Consola {
 			return false;
 		}		
 	}
+	
+	public LocalDate leerFecha() {
+		String fechaTexto = sc.nextLine();
+		LocalDate fecha = LocalDate.parse(fechaTexto);
+		return fecha;
+	}
+	
 	public void mostrarMenuPrincipal() {
 		System.out.println("Ingrese la opcion que desea ejecutar:" 
 				+ "\n 1. Añadir animal" 

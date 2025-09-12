@@ -1,6 +1,7 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public abstract class Animal implements Serializable{
 	/**
@@ -14,13 +15,14 @@ public abstract class Animal implements Serializable{
 	private char sexo;
 	private String habitat;
 	private String formaDesplazamiento;
+	private LocalDate fechaIngreso;
 	
 	public Animal() {
 		super();	
 	}
 
 	public Animal(String nombre, String especie, float peso, int edad, char sexo, String habitat,
-			String formaDesplazamiento) {
+			String formaDesplazamiento, LocalDate fechaIngreso) {
 		super();
 		this.nombre = nombre;
 		this.especie = especie;
@@ -29,6 +31,7 @@ public abstract class Animal implements Serializable{
 		this.sexo = sexo;
 		this.habitat = habitat;
 		this.formaDesplazamiento = formaDesplazamiento;
+		this.fechaIngreso = fechaIngreso;
 	}
 
 
@@ -91,10 +94,20 @@ public abstract class Animal implements Serializable{
 		this.formaDesplazamiento = formaDesplazamiento;
 	}
 
+	
+	
+	public LocalDate getFechaIngreso() {
+		return fechaIngreso;
+	}
+
+	public void setFechaIngreso(LocalDate fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+
 	@Override
 	public String toString() {
 		return "Nombre: " + nombre + "\n Especie: " + especie + "\n Peso: " + peso + "\n Edad: " + edad + "\n Sexo: "
-				+ sexo + "\n Habitat: " + habitat + "\n Forma de desplazamiento: " + formaDesplazamiento;
+				+ sexo + "\n Habitat: " + habitat + "\n Forma de desplazamiento: " + formaDesplazamiento + "\n Fecha de ingreso: " + fechaIngreso;
 	}
 
 	

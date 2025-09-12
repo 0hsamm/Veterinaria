@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.time.LocalDate;
+
 public class Pez extends Animal implements SerVivo , Mascota{
 	/**
 	 * 
@@ -20,18 +22,20 @@ public class Pez extends Animal implements SerVivo , Mascota{
 
 	
 
+	
+
 	public Pez(String nombre, String especie, float peso, int edad, char sexo, String habitat,
-			String formaDesplazamiento, boolean tieneEscama, String tamanoAleta) {
-		super(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento);
+			String formaDesplazamiento, LocalDate fechaIngreso, boolean tieneEscama, String tamanoAleta) {
+		super(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso);
 		this.tieneEscama = tieneEscama;
 		this.tamanoAleta = tamanoAleta;
 	}
 	
 	
-	
+
 	public Pez(String nombre, String especie, float peso, int edad, char sexo, String habitat,
-			String formaDesplazamiento) {
-		super(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento);
+			String formaDesplazamiento, LocalDate fechaIngreso) {
+		super(nombre, especie, peso, edad, sexo, habitat, formaDesplazamiento, fechaIngreso);
 		// TODO Auto-generated constructor stub
 	}
 
