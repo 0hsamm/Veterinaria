@@ -1,5 +1,6 @@
 package co.edu.unbosque.model.persistence;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Perro;
@@ -118,6 +119,18 @@ public class PerroDAO implements DAO<Perro> {
 	
 	public void escribirEnArchivoSerializado() {
 		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaPerros);
+	}
+
+	public String generarReporteDiaActual() {
+	    LocalDate fechaActual = LocalDate.now();
+	    StringBuilder sb = new StringBuilder();
+	    
+	    for (Perro perro : listaPerros) {
+		    if (fechaActual.equals(perro.getFechaIngreso())) {
+				sb.append(perro.toString()).append("\n");
+			}
+		}
+	    return sb.toString();
 	}
 
 }

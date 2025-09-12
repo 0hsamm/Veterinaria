@@ -11,4 +11,5 @@ public interface DAO <E>{
 	public void escribirEnArchivoDeTexto();
 	public void cargarDesdeArchivoSerializado();
 	public void escribirEnArchivoSerializado();
+	public String generarReporteDiaActual();
 }

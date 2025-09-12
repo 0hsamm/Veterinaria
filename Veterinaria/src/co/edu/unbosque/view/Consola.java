@@ -96,6 +96,13 @@ public class Consola {
 				+ "\n 4. Mostrar reptiles"
 				+ "\n 5. Mostrar aves");
 		
-		
+	}
+	public void mostrarMenuReporte() {
+		System.out.println("Ingrese la opcion que desea ejecutar:"
+				+"\n 1. Reporte perros"
+				+"\n 2. Reporte gatos"
+				+"\n 3. Reporte peces"
+				+"\n 4. Reporte reptiles"
+				+"\n 5. Reporte aves");
 	}
 }

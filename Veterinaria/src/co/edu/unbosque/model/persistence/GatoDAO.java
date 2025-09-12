@@ -1,5 +1,6 @@
 package co.edu.unbosque.model.persistence;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Gato;
@@ -121,6 +122,18 @@ public class GatoDAO implements DAO<Gato>{
 	public void escribirEnArchivoSerializado() {
 		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaGatos);
 		
+	}
+
+	@Override
+	public String generarReporteDiaActual() {
+		LocalDate fechaActual = LocalDate.now();
+		StringBuilder sb = new StringBuilder();
+		for (Gato gato : listaGatos) {
+			if (fechaActual.equals(gato.getFechaIngreso())) {
+				sb.append(gato.toString()).append("\n");
+			}
+		}
+		return sb.toString();
 	}
 	
 }

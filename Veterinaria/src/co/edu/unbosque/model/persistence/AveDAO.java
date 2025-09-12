@@ -1,5 +1,6 @@
 package co.edu.unbosque.model.persistence;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Ave;
@@ -130,6 +131,19 @@ public class AveDAO implements DAO<Ave>{
 	public void escribirEnArchivoSerializado() {
 		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaAves);
 		
+	}
+
+
+	@Override
+	public String generarReporteDiaActual() {
+		LocalDate fechaActual = LocalDate.now();
+		StringBuilder sb = new StringBuilder();
+		for (Ave ave : listaAves) {
+			if (fechaActual.equals(ave.getFechaIngreso())) {
+				sb.append(ave.toString()).append("\n");
+			}
+		}
+		return sb.toString();
 	}
 	
 	

@@ -1,5 +1,6 @@
 package co.edu.unbosque.model.persistence;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.Reptil;
@@ -125,6 +126,19 @@ public class ReptilDAO implements DAO<Reptil>{
 	public void escribirEnArchivoSerializado() {
 		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaReptiles);
 		
+	}
+
+
+	@Override
+	public String generarReporteDiaActual() {
+		LocalDate fechaActual = LocalDate.now();
+		StringBuilder sb = new StringBuilder();
+		for (Reptil reptil : listaReptiles) {
+			if (fechaActual.equals(reptil.getFechaIngreso())) {
+				sb.append(reptil.toString()).append("\n");
+			}
+		}
+		return sb.toString();
 	}
 	
 }
