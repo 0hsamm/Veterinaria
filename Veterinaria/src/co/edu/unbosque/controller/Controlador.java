@@ -1,10 +1,10 @@
 package co.edu.unbosque.controller;
 
 import java.time.LocalDate;
+import java.util.InputMismatchException;
 
 import co.edu.unbosque.model.*;
 import co.edu.unbosque.util.exception.InvalidSizeException;
-import co.edu.unbosque.util.exception.InvalidWeightException;
 import co.edu.unbosque.util.exception.InvalidAnswerException;
 import co.edu.unbosque.util.exception.InvalidDateException;
 import co.edu.unbosque.util.exception.InvalidDateNullException;
@@ -62,7 +62,6 @@ public class Controlador {
 						con.escribirLineaConSalto("Inserte el peso del perro");
 						float peso = con.leerFlotante();
 						con.quemarLinea();
-						LanzadorDeExcepcion.verificarPeso(peso);
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);
 						con.escribirLineaConSalto("Inserte si el perro es macho o hembra (M/H)");
 						char sexo = con.leerCaracter();
@@ -96,14 +95,15 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSizeException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSexException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -120,7 +120,6 @@ public class Controlador {
 						con.escribirLineaConSalto("Ingrese el peso del gato");
 						float peso = con.leerFlotante();			
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);		
-						LanzadorDeExcepcion.verificarPeso(peso);
 						con.escribirLineaConSalto("Ingrese edad del gato");
 						int edad = con.leerEntero();		
 						LanzadorDeExcepcion.verificarNumeroNegativo(edad);	
@@ -156,14 +155,15 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSizeException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSexException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -179,7 +179,6 @@ public class Controlador {
 						LanzadorDeExcepcion.verificarPalabra(especie);
 						con.escribirLineaConSalto("Ingrese el peso del pez");
 						float peso = con.leerFlotante();
-						LanzadorDeExcepcion.verificarPeso(peso);
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);		
 						con.escribirLineaConSalto("Ingrese la edad del pez");
 						int edad = con.leerEntero();				
@@ -215,8 +214,6 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSizeException e) {
@@ -225,6 +222,9 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidAnswerException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -240,7 +240,6 @@ public class Controlador {
 						LanzadorDeExcepcion.verificarPalabra(especie);
 						con.escribirLineaConSalto("Ingrese el peso del reptil");
 						float peso = con.leerFlotante();
-						LanzadorDeExcepcion.verificarPeso(peso);
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);
 						con.escribirLineaConSalto("Ingrese la edad del reptil");
 						int edad = con.leerEntero();
@@ -278,14 +277,15 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSexException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidAnswerException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -301,7 +301,6 @@ public class Controlador {
 						LanzadorDeExcepcion.verificarPalabra(especie);
 						con.escribirLineaConSalto("Ingrese el peso del ave");
 						float peso = con.leerFlotante();
-						LanzadorDeExcepcion.verificarPeso(peso);
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);
 						con.escribirLineaConSalto("Ingrese la edad del ave");
 						int edad = con.leerEntero();
@@ -338,12 +337,13 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSexException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -487,7 +487,6 @@ public class Controlador {
 						con.escribirLineaConSalto("Inserte el peso del perro");
 						float peso = con.leerFlotante();
 						con.quemarLinea();
-						LanzadorDeExcepcion.verificarPeso(peso);
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);
 						con.escribirLineaConSalto("Inserte si el perro es macho o hembra (M/H)");
 						char sexo = con.leerCaracter();
@@ -521,14 +520,15 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSizeException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSexException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -554,7 +554,6 @@ public class Controlador {
 						con.escribirLineaConSalto("Ingrese el peso del gato");
 						float peso = con.leerFlotante();			
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);		
-						LanzadorDeExcepcion.verificarPeso(peso);
 						con.escribirLineaConSalto("Ingrese edad del gato");
 						int edad = con.leerEntero();		
 						LanzadorDeExcepcion.verificarNumeroNegativo(edad);	
@@ -590,14 +589,15 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSizeException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSexException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -622,7 +622,6 @@ public class Controlador {
 						LanzadorDeExcepcion.verificarPalabra(especie);
 						con.escribirLineaConSalto("Ingrese el peso del pez");
 						float peso = con.leerFlotante();
-						LanzadorDeExcepcion.verificarPeso(peso);
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);		
 						con.escribirLineaConSalto("Ingrese la edad del pez");
 						int edad = con.leerEntero();				
@@ -658,8 +657,6 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSizeException e) {
@@ -668,6 +665,9 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidAnswerException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -692,7 +692,6 @@ public class Controlador {
 						LanzadorDeExcepcion.verificarPalabra(especie);
 						con.escribirLineaConSalto("Ingrese el peso del reptil");
 						float peso = con.leerFlotante();
-						LanzadorDeExcepcion.verificarPeso(peso);
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);
 						con.escribirLineaConSalto("Ingrese la edad del reptil");
 						int edad = con.leerEntero();
@@ -730,14 +729,15 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSexException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidAnswerException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
@@ -762,7 +762,6 @@ public class Controlador {
 						LanzadorDeExcepcion.verificarPalabra(especie);
 						con.escribirLineaConSalto("Ingrese el peso del ave");
 						float peso = con.leerFlotante();
-						LanzadorDeExcepcion.verificarPeso(peso);
 						LanzadorDeExcepcion.verificarNumeroNegativo(peso);
 						con.escribirLineaConSalto("Ingrese la edad del ave");
 						int edad = con.leerEntero();
@@ -799,16 +798,17 @@ public class Controlador {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidDateNullException e) {
 						con.escribirLineaConSalto(e.getMessage());
-					}catch (InvalidWeightException e) {
-						con.escribirLineaConSalto(e.getMessage());
 					}catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}catch (InvalidSexException e) {
 						con.escribirLineaConSalto(e.getMessage());
+					}catch(InputMismatchException e) {
+						con.escribirLineaConSalto("El valor ingresado no tiene un formato adecuado\n");
+						con.quemarLinea();
 					}
 
 
-//					break;
+					break;
 				}
 
 				default:

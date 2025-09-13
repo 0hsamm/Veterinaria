@@ -70,11 +70,8 @@ public class LanzadorDeExcepcion {
 			   throw new InvalidDateNullException();
 		   }
 	    }
-	public static void verificarPeso(float p) throws InvalidWeightException  {
-		if(Float.isNaN(p)) {
-			throw new InvalidWeightException();
-		}
-		 }
+	
+		 
 	       public static void verificarRespuesta(boolean r) throws InvalidAnswerException {
 	    	   if(!r) {
 	    		   throw new InvalidAnswerException();
