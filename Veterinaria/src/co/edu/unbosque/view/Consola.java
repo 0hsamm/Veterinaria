@@ -59,6 +59,7 @@ public class Consola {
 				+ "\n 2. Eliminar animal"
 				+ "\n 3. Actualizar animal"
 				+ "\n 4. Mostrar animal"
+				+ "\n 5. Mostrar reporte diario de cada animal"
 				+ "\n 99. Salir ");
 	}
 	public void mostrarMenuAnadir() {

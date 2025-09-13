@@ -107,7 +107,7 @@ public class PezDAO implements DAO<Pez>{
 
 	@Override
 	public void cargarDesdeArchivoSerializado() {
-		Object contenido = FileHandler.leerDesdeArchivoSerializado(FILE_NAME);
+		Object contenido = FileHandler.leerDesdeArchivoSerializado(SERIAL_FILE_NAME);
 		if (contenido != null) {
 			listaPeces = (ArrayList<Pez>) contenido;
 		}

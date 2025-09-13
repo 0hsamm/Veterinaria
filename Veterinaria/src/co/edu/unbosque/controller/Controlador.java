@@ -357,8 +357,8 @@ public class Controlador {
 
 			case 2: {
 				con.mostrarMenuEliminar();
-				opcion = con.leerEntero();
 				try {
+					opcion = con.leerEntero();
 					LanzadorDeExcepcion.verificarNumeroNegativo(opcion);
 				} catch (NegativeNumberException e) {
 					con.escribirLineaConSalto(e.getMessage());
@@ -369,45 +369,48 @@ public class Controlador {
 				switch (opcion) {
 				case 1: {
 					con.escribirLineaConSalto("Ingrese el indice del perro a eliminar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
+						con.quemarLinea();
+						mf.getPerroDao().delete(index);
+						con.escribirLineaConSalto("Eliminado exitosamente ");
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}
-					con.quemarLinea();
-					mf.getPerroDao().delete(index);
-					con.escribirLineaConSalto("Eliminado exitosamente ");
+
 					break;
 
 				}
 
 				case 2: {
 					con.escribirLineaConSalto("Ingrese el indice del gato a eliminar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
+						con.quemarLinea();
+						mf.getGatoDao().delete(index);
+						con.escribirLineaConSalto("Eliminado exitosamente ");
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}
-					con.quemarLinea();
-					mf.getGatoDao().delete(index);
-					con.escribirLineaConSalto("Eliminado exitosamente ");
+
 					break;
 
 				}
 
 				case 3: {
 					con.escribirLineaConSalto("Ingrese el indice del pez a eliminar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
+						con.quemarLinea();
+						mf.getPezDao().delete(index);
+						con.escribirLineaConSalto("Eliminado exitosamente ");
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}
-					con.quemarLinea();
-					mf.getPezDao().delete(index);
-					con.escribirLineaConSalto("Eliminado exitosamente ");
+
 
 					break;
 
@@ -415,15 +418,16 @@ public class Controlador {
 
 				case 4: {
 					con.escribirLineaConSalto("Ingrese el indice del reptil a eliminar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
+						con.quemarLinea();
+						mf.getReptilDao().delete(index);
+						con.escribirLineaConSalto("Eliminado exitosamente ");
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}
-					con.quemarLinea();
-					mf.getReptilDao().delete(index);
-					con.escribirLineaConSalto("Eliminado exitosamente ");
+
 
 					break;
 
@@ -431,15 +435,16 @@ public class Controlador {
 
 				case 5: {
 					con.escribirLineaConSalto("Ingrese el indice del ave a eliminar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
+						con.quemarLinea();
+						mf.getAveDao().delete(index);
+						con.escribirLineaConSalto("Eliminado exitosamente ");
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
 					}
-					con.quemarLinea();
-					mf.getAveDao().delete(index);
-					con.escribirLineaConSalto("Eliminado exitosamente ");
+
 
 					break;
 
@@ -455,8 +460,8 @@ public class Controlador {
 
 			case 3: {
 				con.mostrarMenuActualizar();
-				opcion = con.leerEntero();
 				try {
+					opcion = con.leerEntero();
 					LanzadorDeExcepcion.verificarNumeroNegativo(opcion);
 				} catch (NegativeNumberException e) {
 					con.escribirLineaConSalto(e.getMessage());
@@ -466,8 +471,8 @@ public class Controlador {
 				switch (opcion) {
 				case 1: {
 					con.escribirLineaConSalto("Ingrese el indice del perro a actualizar: ");
-					int index = con.leerEntero();
 					try {
+					int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
@@ -536,8 +541,8 @@ public class Controlador {
 				}
 				case 2: {
 					con.escribirLineaConSalto("Ingrese el indice del gato a actualizar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
@@ -606,8 +611,8 @@ public class Controlador {
 
 				case 3: {
 					con.escribirLineaConSalto("Ingrese el indice del pez a actualizar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
@@ -676,8 +681,8 @@ public class Controlador {
 
 				case 4: {
 					con.escribirLineaConSalto("Ingrese el indice del reptil a actualizar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
@@ -746,8 +751,8 @@ public class Controlador {
 
 				case 5: {
 					con.escribirLineaConSalto("Ingrese el indice del ave a actualizar: ");
-					int index = con.leerEntero();
 					try {
+						int index = con.leerEntero();
 						LanzadorDeExcepcion.verificarNumeroNegativo(index);
 					} catch (NegativeNumberException e) {
 						con.escribirLineaConSalto(e.getMessage());
@@ -821,8 +826,8 @@ public class Controlador {
 
 			case 4: {
 				con.mostrarMenuMostrar();
-				opcion = con.leerEntero();
 				try {
+					opcion = con.leerEntero();
 					LanzadorDeExcepcion.verificarNumeroNegativo(opcion);
 				} catch (NegativeNumberException e) {
 					con.escribirLineaConSalto(e.getMessage());
@@ -866,7 +871,38 @@ public class Controlador {
 
 				break;
 			}
-
+			case 5:{
+				con.mostrarMenuReporte();
+				try {
+					opcion = con.leerEntero();
+					LanzadorDeExcepcion.verificarNumeroNegativo(opcion);
+				} catch (NegativeNumberException e) {
+					con.escribirLineaConSalto(e.getMessage());
+				}
+				switch(opcion) {
+					case 1:{
+						con.escribirLineaConSalto(mf.getPerroDao().generarReporteDiaActual());
+						break;
+					}
+					case 2:{
+						con.escribirLineaConSalto(mf.getGatoDao().generarReporteDiaActual());
+						break;
+					}
+					case 3:{
+						con.escribirLineaConSalto(mf.getPezDao().generarReporteDiaActual());
+						break;
+					}
+					case 4:{
+						con.escribirLineaConSalto(mf.getReptilDao().generarReporteDiaActual());
+						break;
+					}
+					case 5:{
+						con.escribirLineaConSalto(mf.getAveDao().generarReporteDiaActual());
+						break;
+					}
+				}
+				break;
+			}
 			case 99: {
 				con.escribirLineaConSalto("Gracias, hasta luego");
 				break mainloop;
