@@ -86,7 +86,7 @@ public class Reptil extends Animal implements SerVivo , Mascota{
 	
 	@Override
 	public String toString() {
-		return super.toString() + "\n Es venenoso: " + esVenenoso + "\n Tiene escamas: " + tieneEscama;
+		return super.toString() + "\n Es venenoso: " + esVenenoso + "\n Tiene escamas: " + tieneEscama+ "\n------------------------";
 	}
 	
 	

@@ -87,7 +87,7 @@ public class Pez extends Animal implements SerVivo , Mascota{
 	
 	@Override
 	public String toString() {
-		return super.toString() + "\n Tiene escamas: " + tieneEscama + "\n Tamaño de la aleta: " + tamanoAleta;
+		return super.toString() + "\n Tiene escamas: " + tieneEscama + "\n Tamaño de la aleta: " + tamanoAleta+ "\n------------------------";
 	}
 	
 	

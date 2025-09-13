@@ -89,7 +89,7 @@ public class Ave extends Animal implements SerVivo , Mascota{
 	
 	@Override
 	public String toString() {
-		return super.toString() + "\n TipoDePluma: " + tipoDePluma + "\n Tipo de pico: " + tipoDePico;
+		return super.toString() + "\n TipoDePluma: " + tipoDePluma + "\n Tipo de pico: " + tipoDePico + "\n------------------------";
 	}
 	
 	

@@ -25,6 +25,7 @@ public class GatoDAO implements DAO<Gato>{
 
 	@Override
 	public boolean delete(int index) {
+		index = index - 1;
 		if (index <0 || index >= listaGatos.size()) {
 			return false;
 		}
@@ -38,6 +39,7 @@ public class GatoDAO implements DAO<Gato>{
 
 	@Override
 	public boolean update(int index, Gato newData) {
+		index = index - 1;
 		if (index <0 || index >= listaGatos.size()) {
 			return false;
 		}
@@ -53,15 +55,20 @@ public class GatoDAO implements DAO<Gato>{
 	@Override
 	public String showAll() {
 		String content = "";
+		int i = 1;
 		for (Gato gato : listaGatos) {
-			content += gato.toString() + "\n";
+			content+= "\n Gato " + i + ". " + gato.toString();
+			i++;
 		}
-		return content;
+		return content + "\n";
 	}
 
 	@Override
 	public int count() {
 		return listaGatos.size();
+	}
+	public boolean isEmpty() {
+		return listaGatos.isEmpty();
 	}
 
 	@Override

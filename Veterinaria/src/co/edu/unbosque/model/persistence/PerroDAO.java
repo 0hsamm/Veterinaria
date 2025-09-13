@@ -27,6 +27,7 @@ public class PerroDAO implements DAO<Perro> {
 
 	@Override
 	public boolean delete(int index) {
+		index = index - 1;
 		if (index < 0 || index >= listaPerros.size()) {
 			return false;
 		} else {
@@ -39,6 +40,7 @@ public class PerroDAO implements DAO<Perro> {
 
 	@Override
 	public boolean update(int index, Perro newData) {
+		index = index - 1;
 		if (index < 0 || index >= listaPerros.size()) {
 			return false;
 		} else {
@@ -56,11 +58,20 @@ public class PerroDAO implements DAO<Perro> {
 
 	@Override
 	public String showAll() {
-		String content = "";
-		for (Perro perro : listaPerros) {
-			content += perro.toString() + "\n";
+		if(listaPerros.isEmpty()) {
+			return "No hay perros registrados\n";
 		}
-		return content;
+		String content = "";
+		int i = 1;
+		for (Perro perro : listaPerros) {
+			content += "\n Perro " + i + ". " + perro.toString();
+			i++;
+		}
+		return content + "\n";
+	}
+	
+	public boolean isEmpty() {
+		return listaPerros.isEmpty();
 	}
 
 	@Override

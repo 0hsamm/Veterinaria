@@ -106,7 +106,7 @@ public abstract class Animal implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Nombre: " + nombre + "\n Especie: " + especie + "\n Peso: " + peso + "\n Edad: " + edad + "\n Sexo: "
+		return "\n------------------------" + "\n Nombre: " + nombre + "\n Especie: " + especie + "\n Peso: " + peso + "\n Edad: " + edad + "\n Sexo: "
 				+ sexo + "\n Habitat: " + habitat + "\n Forma de desplazamiento: " + formaDesplazamiento + "\n Fecha de ingreso: " + fechaIngreso;
 	}
 

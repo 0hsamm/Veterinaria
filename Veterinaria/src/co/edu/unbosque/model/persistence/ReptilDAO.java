@@ -9,14 +9,14 @@ public class ReptilDAO implements DAO<Reptil>{
 	private ArrayList<Reptil> listaReptiles;
 	private final String FILE_NAME = "Reptil.csv";
 	private final String SERIAL_FILE_NAME = "Reptiles.bin";
-	
+
 	public ReptilDAO() {
 		listaReptiles = new ArrayList<>();
 		//leerDesdeArchivoDeTexto(FILE_NAME);
 		cargarDesdeArchivoSerializado();
 	}
-	
-	
+
+
 	@Override
 	public void create(Reptil newData) {
 		listaReptiles.add(newData);
@@ -26,12 +26,13 @@ public class ReptilDAO implements DAO<Reptil>{
 
 	@Override
 	public boolean delete(int index) {
+		index = index - 1;
 		if (index <0 || index >= listaReptiles.size()) {
 			return false;
 		}
 		else {
 			listaReptiles.remove(index);
-//			escribirEnArchivoDeTexto();
+			//			escribirEnArchivoDeTexto();
 			escribirEnArchivoSerializado();
 			return true;
 		}
@@ -39,23 +40,29 @@ public class ReptilDAO implements DAO<Reptil>{
 
 	@Override
 	public boolean update(int index, Reptil newData) {
+		index = index - 1;
 		if (index <0 || index >= listaReptiles.size()) {
 			return false;
 		}
 		else {
 			listaReptiles.set(index, newData);
-//			escribirEnArchivoDeTexto();
+			//			escribirEnArchivoDeTexto();
 			escribirEnArchivoSerializado();
 			return true;
 		}
 	}
 	@Override
 	public String showAll() {
-		String content = "";
-		for (Reptil reptil : listaReptiles) {
-			content += reptil.toString() + "\n";
+		if(listaReptiles.isEmpty()) {
+			return "No hay reptiles registrados\n";
 		}
-		return content;
+		String content = "";
+		int i = 1;
+		for (Reptil reptil : listaReptiles) {
+			content+= "\n Reptil " + i + ". " + reptil.toString();
+			i++;
+		}
+		return content + "\n";
 	}
 
 	@Override
@@ -63,6 +70,9 @@ public class ReptilDAO implements DAO<Reptil>{
 		return listaReptiles.size();
 	}
 
+	public boolean isEmpty() {
+		return listaReptiles.isEmpty();
+	}
 
 	@Override
 	public void leerDesdeArchivoDeTexto(String url) {
@@ -86,7 +96,7 @@ public class ReptilDAO implements DAO<Reptil>{
 				temp.setTieneEscama(Boolean.valueOf(columnas[7]));
 				temp.setEsVenenoso(Boolean.valueOf(columnas[8]));
 
-				
+
 				listaReptiles.add(temp);
 			}
 		}
@@ -125,7 +135,7 @@ public class ReptilDAO implements DAO<Reptil>{
 	@Override
 	public void escribirEnArchivoSerializado() {
 		FileHandler.escribirEnArchivoSerializado(SERIAL_FILE_NAME, listaReptiles);
-		
+
 	}
 
 
@@ -140,5 +150,5 @@ public class ReptilDAO implements DAO<Reptil>{
 		}
 		return sb.toString();
 	}
-	
+
 }

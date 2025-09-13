@@ -87,7 +87,7 @@ public class Perro extends Animal implements SerVivo , Mascota{
 	
 	@Override
 	public String toString() {
-		return super.toString() + "\n Color del pelaje: " + colorPelaje + "\n Tamaño de la oreja: " + tamanoOreja;
+		return super.toString() + "\n Color del pelaje: " + colorPelaje + "\n Tamaño de la oreja: " + tamanoOreja+ "\n------------------------";
 	}
 	
 	

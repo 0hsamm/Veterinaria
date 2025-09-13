@@ -27,6 +27,7 @@ public class AveDAO implements DAO<Ave>{
 
 	@Override
 	public boolean delete(int index) {
+		index = index - 1;
 		if (index <0 || index >= listaAves.size()) {
 			return false;
 		}
@@ -40,6 +41,7 @@ public class AveDAO implements DAO<Ave>{
 
 	@Override
 	public boolean update(int index, Ave newData) {
+		index = index - 1;
 		if (index <0 || index >= listaAves.size()) {
 			return false;
 		}
@@ -54,18 +56,26 @@ public class AveDAO implements DAO<Ave>{
 	
 	@Override
 	public String showAll() {
-		String content = "";
-		for (Ave ave : listaAves) {
-			content += ave.toString() + "\n";
+		
+		if(listaAves.isEmpty()) {
+			return "No hay aves registradas";
 		}
-		return content;
+		String content = "";
+		int i = 1;
+		for (Ave ave : listaAves) {
+			content+= "\n Ave " + i + ". " + ave.toString();
+			i++;
+		}
+		return content + "\n";
 	}
 
 	@Override
 	public int count() {
 		return listaAves.size();
 	}
-
+	public boolean isEmpty() {
+		return listaAves.isEmpty();
+	}
 
 	@Override
 	public void leerDesdeArchivoDeTexto(String url) {

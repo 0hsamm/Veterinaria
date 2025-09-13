@@ -7,6 +7,7 @@ public interface DAO <E>{
 	public boolean update(int index, E newData);
 	public String showAll();
 	public int count();
+	public boolean isEmpty();
 	public void  leerDesdeArchivoDeTexto(String url);
 	public void escribirEnArchivoDeTexto();
 	public void cargarDesdeArchivoSerializado();

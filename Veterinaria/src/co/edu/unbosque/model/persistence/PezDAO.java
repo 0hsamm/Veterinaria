@@ -24,6 +24,7 @@ public class PezDAO implements DAO<Pez>{
 
 	@Override
 	public boolean delete(int index) {
+		index = index - 1;
 		if (index <0 || index >= listaPeces.size()) {
 			return false;
 		}
@@ -36,6 +37,7 @@ public class PezDAO implements DAO<Pez>{
 
 	@Override
 	public boolean update(int index, Pez newData) {
+		index = index - 1;
 		if (index <0 || index >= listaPeces.size()) {
 			return false;
 		}
@@ -49,11 +51,16 @@ public class PezDAO implements DAO<Pez>{
 	
 	@Override
 	public String showAll() {
-		String content = "";
-		for (Pez pez : listaPeces) {
-			content += pez.toString() + "\n";
+		if(listaPeces.isEmpty()) {
+			return "No hay peces registrados\n";
 		}
-		return content;
+		String content = "";
+		int i = 1;
+		for (Pez pez : listaPeces) {
+			content+= "\n Pez " + i + ". " + pez.toString();
+			i++;
+		}
+		return content + "\n";
 	}
 
 	@Override
@@ -61,6 +68,10 @@ public class PezDAO implements DAO<Pez>{
 		return listaPeces.size();
 	}
 
+	public boolean isEmpty() {
+		return listaPeces.isEmpty();
+	}
+	
 	@Override
 	public void leerDesdeArchivoDeTexto(String url) {
 		String contenido;
