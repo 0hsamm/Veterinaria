@@ -16,14 +16,15 @@ public class LanzadorDeExcepcion {
 		}
 	}
 	
-	public static void verificarNombre(String s) throws NotValidNameException{
-	    for (char c : s.toCharArray()) {
+	public static void verificarPalabra(String s) throws NotValidWordException{
+		for (char c : s.toCharArray()) {
 	        if (Character.isLetter(c) && s.contains(" ")) {
 	        	return;
 	        }
-	        throw new NotValidNameException();
+	        throw new NotValidWordException();
 	    }
 	}
+	
 	
 	public static void verificarSexo(char sexo) throws InvalidSexException{
 	    if (sexo != 'M' && sexo != 'H' && sexo != 'N') {
@@ -41,5 +42,19 @@ public class LanzadorDeExcepcion {
 		if(fechaIngresada.isAfter(LocalDate.now()))
 		throw new InvalidDateException();
 	}
+	public static void verificarFechaVacia(LocalDate fecha) throws InvalidDateNullException{
+		   if(fecha == null) {
+			   throw new InvalidDateNullException();
+		   }
+	    }
+	public static void verificarPeso(float p) throws InvalidWeightException  {
+		if(Float.isNaN(p)) {
+			throw new InvalidWeightException();
+		}
+		 }
+	        
+	}
 	
-}
+   
+	
+
